@@ -60,13 +60,13 @@ resource "azurerm_automation_software_update_configuration" "automation_software
     for_each = each.value.target != null ? [each.value.target] : []
     content {
       dynamic "azure_query" {
-        for_each = target.value.azure_query != null ? [target.value.azure_query] : []
+        for_each = target.value.azure_query != null ? target.value.azure_query : []
         content {
           locations  = azure_query.value.locations
           scope      = azure_query.value.scope
           tag_filter = azure_query.value.tag_filter
           dynamic "tags" {
-            for_each = azure_query.value.tags != null ? [azure_query.value.tags] : []
+            for_each = azure_query.value.tags != null ? azure_query.value.tags : []
             content {
               tag    = tags.value.tag
               values = tags.value.values
@@ -75,7 +75,7 @@ resource "azurerm_automation_software_update_configuration" "automation_software
         }
       }
       dynamic "non_azure_query" {
-        for_each = target.value.non_azure_query != null ? [target.value.non_azure_query] : []
+        for_each = target.value.non_azure_query != null ? target.value.non_azure_query : []
         content {
           function_alias = non_azure_query.value.function_alias
           workspace_id   = non_azure_query.value.workspace_id

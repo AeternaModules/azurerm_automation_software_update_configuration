@@ -94,19 +94,19 @@ EOT
       source     = optional(string)
     }))
     target = optional(object({
-      azure_query = optional(object({
+      azure_query = optional(list(object({
         locations  = optional(list(string))
         scope      = optional(list(string))
         tag_filter = optional(string)
-        tags = optional(object({
+        tags = optional(list(object({
           tag    = string
           values = list(string)
-        }))
-      }))
-      non_azure_query = optional(object({
+        })))
+      })))
+      non_azure_query = optional(list(object({
         function_alias = optional(string)
         workspace_id   = optional(string)
-      }))
+      })))
     }))
     windows = optional(object({
       classifications_included        = list(string)
