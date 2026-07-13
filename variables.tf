@@ -57,7 +57,7 @@ EOT
   type = map(object({
     automation_account_id    = string
     name                     = string
-    duration                 = optional(string) # Default: "PT2H"
+    duration                 = optional(string)
     non_azure_computer_names = optional(list(string))
     virtual_machine_ids      = optional(list(string))
     schedule = object({
@@ -68,7 +68,7 @@ EOT
       expiry_time_offset_minutes = optional(number)
       frequency                  = string
       interval                   = optional(number)
-      is_enabled                 = optional(bool) # Default: true
+      is_enabled                 = optional(bool)
       monthly_occurrence = optional(object({
         day        = string
         occurrence = number
@@ -77,13 +77,13 @@ EOT
       next_run_offset_minutes   = optional(number)
       start_time                = optional(string)
       start_time_offset_minutes = optional(number)
-      time_zone                 = optional(string) # Default: "Etc/UTC"
+      time_zone                 = optional(string)
     })
     linux = optional(object({
       classifications_included = list(string)
       excluded_packages        = optional(list(string))
       included_packages        = optional(list(string))
-      reboot                   = optional(string) # Default: "IfRequired"
+      reboot                   = optional(string)
     }))
     post_task = optional(object({
       parameters = optional(map(string))
@@ -112,7 +112,7 @@ EOT
       classifications_included        = list(string)
       excluded_knowledge_base_numbers = optional(list(string))
       included_knowledge_base_numbers = optional(list(string))
-      reboot                          = optional(string) # Default: "IfRequired"
+      reboot                          = optional(string)
     }))
   }))
 }
